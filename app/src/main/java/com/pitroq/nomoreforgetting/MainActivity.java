@@ -13,25 +13,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        changeFragment(new HomeFragment());
+        setFrameLayout(new HomeFragment());
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home_item) {
-                changeFragment(new HomeFragment());
+                setFrameLayout(new HomeFragment());
             }
             else if (itemId == R.id.add_new_item) {
-                changeFragment(new AddNewFragment());
+                setFrameLayout(new AddNewFragment());
             }
             else if (itemId == R.id.list_item) {
-                changeFragment(new ListFragment());
+                setFrameLayout(new ListFragment());
             }
             return true;
         });
     }
 
-    private void changeFragment(Fragment object) {
+    private void setFrameLayout(Fragment object) {
         getSupportFragmentManager()
         .beginTransaction()
         .replace(R.id.frameLayout, object)
