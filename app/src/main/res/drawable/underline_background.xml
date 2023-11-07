@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" >
+        <layer-list>
+            <item android:gravity="bottom" android:left="10dp" android:right="10dp">
+                <shape>
+                    <size android:height="3dp" />
+                    <solid android:color="@color/gray" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_checked="false" android:drawable="@color/transparent" />
+</selector>

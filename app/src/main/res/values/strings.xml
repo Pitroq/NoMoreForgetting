@@ -7,4 +7,6 @@
     <string name="edit_option_title">Edit</string>
     <string name="events_home_title">Upcoming events</string>
     <string name="notes_home_title">Pinned notes</string>
+    <string name="events_title">Events</string>
+    <string name="notes_title">Notes</string>
 </resources>
