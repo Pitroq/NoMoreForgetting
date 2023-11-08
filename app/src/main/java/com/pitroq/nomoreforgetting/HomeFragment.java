@@ -21,11 +21,11 @@ public class HomeFragment extends Fragment {
         ListView eventsListView = view.findViewById(R.id.events_list_view);
         EventsListAdapter eventsListAdapter = new EventsListAdapter(getActivity(), eventTitles, eventDates);
         eventsListAdapter.setOnMenuItemClickListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.edit_event) {
+            int itemId = item.getItemId();
+            if (itemId == R.id.edit_event) {
                 Toast.makeText(getContext(), "Edit event: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
             }
-            if (id == R.id.delete_event) {
+            if (itemId == R.id.delete_event) {
                 Toast.makeText(getContext(), "Delete event: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
             }
             return false;
@@ -37,11 +37,11 @@ public class HomeFragment extends Fragment {
         ListView notesListView = view.findViewById(R.id.notes_list_view);
         NotesListAdapter notesListAdapter = new NotesListAdapter(getActivity(), noteTitles);
         notesListAdapter.setOnMenuItemClickListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.edit_event) {
+            int itemId = item.getItemId();
+            if (itemId == R.id.edit_event) {
                 Toast.makeText(getContext(), "Edit note: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
             }
-            if (id == R.id.delete_event) {
+            if (itemId == R.id.delete_event) {
                 Toast.makeText(getContext(), "Delete note: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
             }
             return false;

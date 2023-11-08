@@ -11,17 +11,18 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:padding="10dp"
-        app:srcCompat="@drawable/event_icon"
+        app:srcCompat="@drawable/icon_event"
         android:importantForAccessibility="no" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="10dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
+            android:text="Test Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -29,6 +30,7 @@
 
         <TextView
             android:id="@+id/date"
+            android:text="Test Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -50,7 +52,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:importantForAccessibility="no"
-        android:src="@drawable/more_vert_icon"
+        android:src="@drawable/icon_more_vert"
         tools:ignore="TouchTargetSizeCheck"
         app:tint="@color/black" />
 

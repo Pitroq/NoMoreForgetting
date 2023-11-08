@@ -2,7 +2,7 @@
     <string name="app_name">No More Forgetting</string>
     <string name="home_title">Home</string>
     <string name="add_new_title">New</string>
-    <string name="list_title">List</string>
+    <string name="list_title">Lists</string>
     <string name="delete_option_title">Delete</string>
     <string name="edit_option_title">Edit</string>
     <string name="events_home_title">Upcoming events</string>

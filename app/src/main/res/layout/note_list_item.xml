@@ -11,7 +11,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:padding="10dp"
-        app:srcCompat="@drawable/note_icon"
+        app:srcCompat="@drawable/icon_note"
         android:importantForAccessibility="no" />
 
     <LinearLayout
@@ -44,7 +44,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:importantForAccessibility="no"
-        android:src="@drawable/more_vert_icon"
+        android:src="@drawable/icon_more_vert"
         tools:ignore="TouchTargetSizeCheck"
         app:tint="@color/black" />
 

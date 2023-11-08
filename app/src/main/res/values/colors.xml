@@ -4,5 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="gray">#aaaaaa</color>
+    <color name="accent">#3F51B5</color>
+    <color name="accent2">#317DFF</color>
+<!--    <color name="accent">#4461A8</color>-->
 
 </resources>
