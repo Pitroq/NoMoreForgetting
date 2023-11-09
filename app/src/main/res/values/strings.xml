@@ -9,4 +9,10 @@
     <string name="notes_home_title">Pinned notes</string>
     <string name="events_title">Events</string>
     <string name="notes_title">Notes</string>
+    <string name="title_hint">Title</string>
+    <string name="description_hint">Your description</string>
+    <string-array name="types">
+        <item>Event</item>
+        <item>Note</item>
+    </string-array>
 </resources>

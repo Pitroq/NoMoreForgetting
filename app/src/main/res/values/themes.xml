@@ -6,11 +6,9 @@
     </style>
     <style name="AppTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="colorOnBackground">@color/accent</item>
-
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorPrimary">@color/accent</item>
     </style>
-
     <style name="BottomNavigationStyle">
         <item name="android:background">@color/accent</item>
     </style>

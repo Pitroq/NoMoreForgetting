@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,4 +38,5 @@ public class MainActivity extends AppCompatActivity {
         .replace(R.id.frameLayout, object)
         .commit();
     }
+
 }
