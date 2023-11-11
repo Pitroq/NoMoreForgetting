@@ -1,10 +1,10 @@
 package com.pitroq.nomoreforgetting;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.view.MenuInflater;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,10 +33,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFrameLayout(Fragment object) {
-        getSupportFragmentManager()
-        .beginTransaction()
-        .replace(R.id.frameLayout, object)
-        .commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, object).commit();
+
+        if (object.getClass() == AddNewFragment.class) {
+            findViewById(R.id.save_button).setVisibility(View.VISIBLE);
+        }
+        else {
+            findViewById(R.id.save_button).setVisibility(View.GONE);
+        }
+
     }
 
 }

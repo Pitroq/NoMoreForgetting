@@ -11,6 +11,8 @@
     <string name="notes_title">Notes</string>
     <string name="title_hint">Title</string>
     <string name="description_hint">Your description</string>
+    <string name="select_date_text">Select Date</string>
+    <string name="select_time_text">Select Time</string>
     <string-array name="types">
         <item>Event</item>
         <item>Note</item>
