@@ -3,39 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:layout_height="60dp"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:padding="10dp"
-        app:srcCompat="@drawable/icon_event"
+        app:srcCompat="@drawable/icon_note"
         android:importantForAccessibility="no" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="2dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
-            android:text="Test Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="18sp" />
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/date"
-            android:text="Test Subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textSize="12sp"
-            android:textStyle="italic" />
     </LinearLayout>
 
     <LinearLayout

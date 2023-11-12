@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Calendar;
 
@@ -24,7 +24,6 @@ public class AddNewFragment extends Fragment {
     }
 
     private void createTimePicker(View fragmentView) {
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hour, minute) -> {
             String hourString = String.valueOf(hour);
             String minuteString = String.valueOf(minute);
@@ -56,14 +55,32 @@ public class AddNewFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        Spinner spinner = view.findViewById(R.id.type);
+
         view.getRootView().findViewById(R.id.save_button).setOnClickListener(v -> {
-            System.out.println("SAVING");
+            String type = spinner.getSelectedItem().toString();
+            String title = ((EditText) view.findViewById(R.id.title)).getText().toString();
+            String description = ((EditText) view.findViewById(R.id.description)).getText().toString();
+            if (type.equals("Note")) {
+                TextNotes.add(title, description);
+                Toast.makeText(getContext(), "Created new note", Toast.LENGTH_LONG).show();
+            }
+            else {
+                String date = ((EditText) view.findViewById(R.id.date)).getText().toString();
+                String time = ((EditText) view.findViewById(R.id.time)).getText().toString();
+                EventNotes.add(title, description, date, time);
+                Toast.makeText(getContext(), "Created new event", Toast.LENGTH_LONG).show();
+            }
+
+
+
+            ((BottomNavigationView) view.getRootView().findViewById(R.id.bottom_navigation_view)).setSelectedItemId(R.id.home_item);
+
         });
 
         view.findViewById(R.id.select_date_button).setOnClickListener(v -> createDatePicker(view));
         view.findViewById(R.id.select_time_button).setOnClickListener(v -> createTimePicker(view));
 
-        Spinner spinner = view.findViewById(R.id.type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.types, android.R.layout.simple_spinner_dropdown_item);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

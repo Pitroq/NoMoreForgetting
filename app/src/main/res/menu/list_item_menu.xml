@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/edit_event"
-        android:title="@string/edit_option_title" />
+        android:title="@string/edit_option_title"
+        android:icon="@drawable/icon_edit"/>
     <item
         android:id="@+id/delete_event"
-        android:title="@string/delete_option_title" />
+        android:title="@string/delete_option_title"
+        android:icon="@drawable/icon_delete"/>
+    <item
+        android:id="@+id/toggle_pin_event"
+        android:title="" />
 </menu>

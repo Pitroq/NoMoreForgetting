@@ -29,11 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            style="@style/AppTheme.ActionBar.Button"
             android:importantForAccessibility="no"
             android:paddingVertical="15dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/icon_save"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_save"
+            app:tint="@color/white" />
 
     </androidx.appcompat.widget.Toolbar>
 
