@@ -1,4 +1,4 @@
-package com.pitroq.nomoreforgetting;
+package com.pitroq.nomoreforgetting.note;
 
 public class EventNote {
     public final int id;

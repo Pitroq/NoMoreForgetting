@@ -1,4 +1,4 @@
-package com.pitroq.nomoreforgetting;
+package com.pitroq.nomoreforgetting.note;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class TextNotes {
         notes.add(new TextNote(notes.size(), title, description));
     }
 
-    public static String[] getTitlesFrom(ArrayList<TextNote> notes) {
+    public static String[] getTitles(ArrayList<TextNote> notes) {
         String[] titles = new String[notes.size()];
 
         for (int i = 0; i < notes.size(); i++) {

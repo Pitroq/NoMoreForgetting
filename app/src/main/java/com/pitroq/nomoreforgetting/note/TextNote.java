@@ -1,4 +1,4 @@
-package com.pitroq.nomoreforgetting;
+package com.pitroq.nomoreforgetting.note;
 
 public class TextNote {
     public final int id;

@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.pitroq.nomoreforgetting.note.TextNote;
+import com.pitroq.nomoreforgetting.note.TextNotes;
+
 import java.util.ArrayList;
 
 public class TextNotesListAdapter extends ArrayAdapter<String> {
@@ -19,7 +22,7 @@ public class TextNotesListAdapter extends ArrayAdapter<String> {
     private final ArrayList<TextNote> notes;
 
     public TextNotesListAdapter(Activity activity, ArrayList<TextNote> notes) {
-        super(activity, listViewLayout, TextNotes.getTitlesFrom(notes));
+        super(activity, listViewLayout, TextNotes.getTitles(notes));
         this.activity = activity;
         this.notes = notes;
     }

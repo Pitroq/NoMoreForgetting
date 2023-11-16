@@ -1,4 +1,4 @@
-package com.pitroq.nomoreforgetting;
+package com.pitroq.nomoreforgetting.note;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class EventNotes {
         events.add(new EventNote(events.size(), title, description, date, time));
     }
 
-    public static String[] getTitlesFrom(ArrayList<EventNote> events) {
+    public static String[] getTitles(ArrayList<EventNote> events) {
         String[] titles = new String[events.size()];
 
         for (int i = 0; i < events.size(); i++) {

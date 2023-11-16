@@ -10,6 +10,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 
+import com.pitroq.nomoreforgetting.note.EventNote;
+import com.pitroq.nomoreforgetting.note.EventNotes;
+
 import java.util.ArrayList;
 
 public class EventNotesListAdapter extends ArrayAdapter<String> {
@@ -20,7 +23,7 @@ public class EventNotesListAdapter extends ArrayAdapter<String> {
     private final ArrayList<EventNote> events;
 
     public EventNotesListAdapter(Activity activity, ArrayList<EventNote> events) {
-        super(activity, listViewLayout, EventNotes.getTitlesFrom(events));
+        super(activity, listViewLayout, EventNotes.getTitles(events));
         this.activity = activity;
         this.events = events;
     }

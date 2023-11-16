@@ -3,12 +3,18 @@ package com.pitroq.nomoreforgetting;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
+import com.pitroq.nomoreforgetting.note.EventNote;
+import com.pitroq.nomoreforgetting.note.EventNotes;
+import com.pitroq.nomoreforgetting.note.TextNote;
+import com.pitroq.nomoreforgetting.note.TextNotes;
 
 import java.util.ArrayList;
 
@@ -31,7 +37,11 @@ public class ListViewUtils {
         listView.requestLayout();
     }
 
-    public static void fillTextNotesListView(View view, FragmentActivity activity, Context context, int listViewId, ArrayList<TextNote> notes, Fragment fragment) {
+    public static boolean fillTextNotesListView(View view, FragmentActivity activity, Context context, int listViewId, ArrayList<TextNote> notes, Fragment fragment) {
+        if (notes.isEmpty()) {
+            return false;
+        }
+
         ListView notesListView = view.findViewById(listViewId);
         TextNotesListAdapter notesListAdapter = new TextNotesListAdapter(activity, notes);
         notesListAdapter.setOnMenuItemClickListener(item -> {
@@ -61,11 +71,17 @@ public class ListViewUtils {
         });
         notesListView.setAdapter(notesListAdapter);
         ListViewUtils.setDynamicHeight(notesListView);
+        return true;
     }
 
-    public static void fillEventNotesListView(View view, FragmentActivity activity, Context context, int listViewId, ArrayList<EventNote> events, Fragment fragment) {
+    public static boolean fillEventNotesListView(View view, FragmentActivity activity, Context context, int listViewId, ArrayList<EventNote> events, Fragment fragment) {
+        if (events.isEmpty()) {
+            return false;
+        }
+
         ListView eventsListView = view.findViewById(listViewId);
         EventNotesListAdapter eventsListAdapter = new EventNotesListAdapter(activity, events);
+
         eventsListAdapter.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.edit_event) {
@@ -93,6 +109,7 @@ public class ListViewUtils {
         });
         eventsListView.setAdapter(eventsListAdapter);
         ListViewUtils.setDynamicHeight(eventsListView);
+        return true;
     }
 
 }

@@ -5,15 +5,19 @@
     <string name="list_title">Lists</string>
     <string name="delete_option_title">Delete</string>
     <string name="edit_option_title">Edit</string>
-    <string name="events_home_title">Upcoming events</string>
-    <string name="notes_home_title">Pinned notes</string>
-    <string name="events_title">Events</string>
-    <string name="notes_title">Notes</string>
+    <string name="event_notes_home_title">Pinned events</string>
+    <string name="text_notes_home_title">Pinned notes</string>
+    <string name="event_notes_title">Events</string>
+    <string name="text_notes_title">Notes</string>
     <string name="title_hint">Title</string>
     <string name="description_hint">Your description</string>
     <string name="select_date_text">Select Date</string>
     <string name="select_time_text">Select Time</string>
-    <string-array name="types">
+    <string name="no_pinned_event_notes_info">You don\'t have any pinned events</string>
+    <string name="no_pinned_text_notes_info">You don\'t have any pinned notes</string>
+    <string name="no_text_notes_info">You don\'t have any notes</string>
+    <string name="no_event_notes_info">You don\'t have any events</string>
+    <string-array name="noteTypes">
         <item>Event</item>
         <item>Note</item>
     </string-array>

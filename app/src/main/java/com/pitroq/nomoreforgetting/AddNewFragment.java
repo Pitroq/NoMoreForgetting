@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.pitroq.nomoreforgetting.note.EventNotes;
+import com.pitroq.nomoreforgetting.note.TextNotes;
 
 import java.util.Calendar;
 
@@ -81,7 +83,7 @@ public class AddNewFragment extends Fragment {
         view.findViewById(R.id.select_date_button).setOnClickListener(v -> createDatePicker(view));
         view.findViewById(R.id.select_time_button).setOnClickListener(v -> createTimePicker(view));
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.types, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.noteTypes, android.R.layout.simple_spinner_dropdown_item);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

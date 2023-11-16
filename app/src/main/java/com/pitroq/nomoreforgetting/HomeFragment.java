@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.pitroq.nomoreforgetting.note.EventNotes;
+import com.pitroq.nomoreforgetting.note.TextNotes;
+
 public class HomeFragment extends Fragment {
     public HomeFragment() {
 
@@ -14,8 +17,21 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ListViewUtils.fillEventNotesListView(view, getActivity(), getContext(), R.id.event_notes_list_view, EventNotes.getPinned(), this);
-        ListViewUtils.fillTextNotesListView(view, getActivity(), getContext(), R.id.text_notes_list_view, TextNotes.getPinned(), this);
+
+        if (!ListViewUtils.fillEventNotesListView(view, getActivity(), getContext(), R.id.event_notes_list_view, EventNotes.getPinned(), this)) {
+            view.findViewById(R.id.no_pinned_event_notes_info).setVisibility(View.VISIBLE);
+        }
+        else {
+            view.findViewById(R.id.no_pinned_event_notes_info).setVisibility(View.GONE);
+        }
+
+
+        if (!ListViewUtils.fillTextNotesListView(view, getActivity(), getContext(), R.id.text_notes_list_view, TextNotes.getPinned(), this)) {
+            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.VISIBLE);
+        }
+        else {
+            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.GONE);
+        }
     }
 
     @Override

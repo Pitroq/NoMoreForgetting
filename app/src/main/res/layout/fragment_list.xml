@@ -25,7 +25,7 @@
             android:background="@drawable/underline_background"
             android:button="@null"
             android:gravity="center"
-            android:text="@string/events_title"
+            android:text="@string/event_notes_title"
             tools:ignore="VisualLintButtonSize" />
 
         <RadioButton
@@ -36,20 +36,44 @@
             android:background="@drawable/underline_background"
             android:button="@null"
             android:gravity="center"
-            android:text="@string/notes_title"
+            android:text="@string/text_notes_title"
             tools:ignore="VisualLintButtonSize" />
     </RadioGroup>
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <TextView
+        android:visibility="gone"
         android:layout_marginTop="10dp"
+        android:id="@+id/no_notes_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_event_notes_info"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_type_select" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_type_select"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="NestedScrolling" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="NestedScrolling" />
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
