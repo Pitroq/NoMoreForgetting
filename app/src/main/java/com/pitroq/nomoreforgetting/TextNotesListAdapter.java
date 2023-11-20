@@ -56,6 +56,7 @@ public class TextNotesListAdapter extends ArrayAdapter<String> {
 
             popup.getMenu().findItem(R.id.edit_event).setContentDescription(String.valueOf(textNote.id));
             popup.getMenu().findItem(R.id.delete_event).setContentDescription(String.valueOf(textNote.id));
+            popup.getMenu().findItem(R.id.toggle_pin_event).setContentDescription(String.valueOf(textNote.id));
 
             if (textNote.isPinned) {
                 popup.getMenu().findItem(R.id.toggle_pin_event).setTitle("Unpin");
@@ -65,7 +66,6 @@ public class TextNotesListAdapter extends ArrayAdapter<String> {
                 popup.getMenu().findItem(R.id.toggle_pin_event).setTitle("Pin");
                 popup.getMenu().findItem(R.id.toggle_pin_event).setIcon(R.drawable.icon_border_star);
             }
-            popup.getMenu().findItem(R.id.toggle_pin_event).setContentDescription(String.valueOf(textNote.id));
 
             popup.setOnMenuItemClickListener(listener);
             popup.show();

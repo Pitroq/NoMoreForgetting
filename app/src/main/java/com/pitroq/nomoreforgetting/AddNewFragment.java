@@ -74,8 +74,6 @@ public class AddNewFragment extends Fragment {
                 Toast.makeText(getContext(), "Created new event", Toast.LENGTH_LONG).show();
             }
 
-
-
             ((BottomNavigationView) view.getRootView().findViewById(R.id.bottom_navigation_view)).setSelectedItemId(R.id.home_item);
 
         });

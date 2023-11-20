@@ -8,12 +8,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.pitroq.nomoreforgetting.note.EventNotes;
+import com.pitroq.nomoreforgetting.note.TextNotes;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextNotes.filesDir = getApplicationContext().getFilesDir().getAbsolutePath();
+        TextNotes.loadFromFile();
+
+        EventNotes.filesDir = getApplicationContext().getFilesDir().getAbsolutePath();
+        EventNotes.loadFromFile();
 
         setFrameLayout(new HomeFragment());
 

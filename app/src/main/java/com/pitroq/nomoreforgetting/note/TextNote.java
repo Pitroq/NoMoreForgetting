@@ -1,8 +1,8 @@
 package com.pitroq.nomoreforgetting.note;
 
 public class TextNote {
-    public final int id;
-    public final String title;
+    public int id;
+    public String title;
     public Boolean isPinned = false;
     public String description;
 
