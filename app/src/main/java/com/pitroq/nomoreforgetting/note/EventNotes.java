@@ -4,7 +4,6 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,11 +11,11 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class EventNotes {
-    private static ArrayList<EventNote> events = new ArrayList<>();
+    private static ArrayList<EventNote> eventNotes = new ArrayList<>();
     public static String filesDir;
 
     public static void add(String title, String description, String date, String time) {
-        events.add(new EventNote(events.size(), title, description, date, time));
+        eventNotes.add(new EventNote(eventNotes.size(), title, description, date, time));
         saveToFile();
     }
 
@@ -30,38 +29,37 @@ public class EventNotes {
     }
 
     public static ArrayList<EventNote> getPinned() {
-        ArrayList<EventNote> pinnedNotes = new ArrayList<>();
-        for (EventNote event : events) {
-            if (event.isPinned) {
-                pinnedNotes.add(event);
+        ArrayList<EventNote> pinnedEventNotes = new ArrayList<>();
+        for (EventNote eventNote : eventNotes) {
+            if (eventNote.isPinned) {
+                pinnedEventNotes.add(eventNote);
             }
         }
-        return pinnedNotes;
+        return pinnedEventNotes;
     }
 
     public static ArrayList<EventNote> getAll() {
-        return events;
+        return eventNotes;
     }
 
-    public static void delete(int eventId) {
-        for (EventNote event : events) {
-            if (event.id == eventId) {
-                events.remove(event);
+    public static void delete(int eventNoteId) {
+        for (EventNote event : eventNotes) {
+            if (event.id == eventNoteId) {
+                eventNotes.remove(event);
                 saveToFile();
                 return;
             }
         }
     }
 
-    public static Boolean togglePinnedStatus(int eventId) {
-        for (EventNote event: events) {
-            if (event.id == eventId) {
-                event.isPinned = !event.isPinned;
+    public static void togglePinnedStatus(int eventId) {
+        for (EventNote eventNote: eventNotes) {
+            if (eventNote.id == eventId) {
+                eventNote.isPinned = !eventNote.isPinned;
                 saveToFile();
-                return event.isPinned;
+                return;
             }
         }
-        return null;
     }
 
     public static void saveToFile() {
@@ -72,7 +70,7 @@ public class EventNotes {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            xstream.toXML(events, new FileWriter(file));
+            xstream.toXML(eventNotes, new FileWriter(file));
         }
         catch (IOException e) {
             throw new RuntimeException(e);
@@ -95,6 +93,15 @@ public class EventNotes {
             throw new RuntimeException(e);
         }
 
-        events = fileEvents;
+        eventNotes = fileEvents;
+    }
+
+    public static EventNote get(int eventNoteId) {
+        for (EventNote eventNote: eventNotes) {
+            if (eventNote.id == eventNoteId) {
+                return eventNote;
+            }
+        }
+        return null;
     }
 }

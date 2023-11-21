@@ -11,8 +11,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.pitroq.nomoreforgetting.note.EventNotes;
 import com.pitroq.nomoreforgetting.note.TextNotes;
 
-import java.io.File;
-
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFrameLayout(Fragment object) {
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, object).commit();
-
         if (object.getClass() == AddNewFragment.class) {
             findViewById(R.id.save_button).setVisibility(View.VISIBLE);
         }

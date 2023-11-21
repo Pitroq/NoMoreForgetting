@@ -36,6 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/events_title" />
 
         <ListView
+            android:layout_marginTop="16dp"
             android:id="@+id/event_notes_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,14 +70,15 @@
             app:layout_constraintTop_toBottomOf="@+id/notes_title" />
 
         <ListView
+            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:id="@+id/text_notes_list_view"
             android:layout_width="match_parent"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/no_pinned_text_notes_info"
             tools:ignore="NestedScrolling"
             android:layout_marginBottom="10dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -18,19 +18,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        if (!ListViewUtils.fillEventNotesListView(view, getActivity(), getContext(), R.id.event_notes_list_view, EventNotes.getPinned(), this)) {
-            view.findViewById(R.id.no_pinned_event_notes_info).setVisibility(View.VISIBLE);
-        }
-        else {
+        if (ListViewUtils.fillEventNotesListView(view, getActivity(), getContext(), R.id.event_notes_list_view, EventNotes.getPinned(), this)) {
             view.findViewById(R.id.no_pinned_event_notes_info).setVisibility(View.GONE);
         }
+        else {
+            view.findViewById(R.id.no_pinned_event_notes_info).setVisibility(View.VISIBLE);
+        }
 
 
-        if (!ListViewUtils.fillTextNotesListView(view, getActivity(), getContext(), R.id.text_notes_list_view, TextNotes.getPinned(), this)) {
-            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.VISIBLE);
+        if (ListViewUtils.fillTextNotesListView(view, getActivity(), getContext(), R.id.text_notes_list_view, TextNotes.getPinned(), this)) {
+            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.GONE);
         }
         else {
-            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.GONE);
+            view.findViewById(R.id.no_pinned_text_notes_info).setVisibility(View.VISIBLE);
         }
     }
 

@@ -1,9 +1,9 @@
 package com.pitroq.nomoreforgetting;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,24 +47,21 @@ public class ListViewUtils {
         notesListAdapter.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.edit_event) {
-                Toast.makeText(context, "Edit note: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
+                TextNote textNote = TextNotes.get(Integer.parseInt((String) item.getContentDescription()));
+                assert textNote != null;
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("textNoteId", Integer.parseInt((String) item.getContentDescription()));
+                EditTextNoteFragment editTextNoteFragment = new EditTextNoteFragment();
+                editTextNoteFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, editTextNoteFragment).commit();
             }
             if (itemId == R.id.delete_event) {
                 TextNotes.delete(Integer.parseInt((String) item.getContentDescription()));
-                Toast.makeText(context, "Note has been deleted", Toast.LENGTH_SHORT).show();
-
                 MainActivity.reloadFragmentLayout(activity, fragment);
             }
             if (itemId == R.id.toggle_pin_event) {
-                Boolean status = TextNotes.togglePinnedStatus(Integer.parseInt((String) item.getContentDescription()));
-                assert status != null;
-                if (status) {
-                    Toast.makeText(context, "Note has been pinned", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(context, "Note has been unpinned", Toast.LENGTH_SHORT).show();
-                }
-
+                TextNotes.togglePinnedStatus(Integer.parseInt((String) item.getContentDescription()));
                 MainActivity.reloadFragmentLayout(activity, fragment);
             }
             return false;
@@ -85,7 +82,14 @@ public class ListViewUtils {
         eventsListAdapter.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.edit_event) {
-                Toast.makeText(context, "Edit event: " + item.getContentDescription(), Toast.LENGTH_SHORT).show();
+                EventNote eventNote = EventNotes.get(Integer.parseInt((String) item.getContentDescription()));
+                assert eventNote != null;
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("eventNoteId", Integer.parseInt((String) item.getContentDescription()));
+                EditEventNoteFragment editEventNoteFragment = new EditEventNoteFragment();
+                editEventNoteFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, editEventNoteFragment).commit();
             }
             if (itemId == R.id.delete_event) {
                 EventNotes.delete(Integer.parseInt((String) item.getContentDescription()));
@@ -94,15 +98,7 @@ public class ListViewUtils {
                 MainActivity.reloadFragmentLayout(activity, fragment);
             }
             if (itemId == R.id.toggle_pin_event) {
-                Boolean status = EventNotes.togglePinnedStatus(Integer.parseInt((String) item.getContentDescription()));
-                assert status != null;
-                if (status) {
-                    Toast.makeText(context, "Event has been pinned", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(context, "Event has been unpinned", Toast.LENGTH_SHORT).show();
-                }
-
+                EventNotes.togglePinnedStatus(Integer.parseInt((String) item.getContentDescription()));
                 MainActivity.reloadFragmentLayout(activity, fragment);
             }
             return false;

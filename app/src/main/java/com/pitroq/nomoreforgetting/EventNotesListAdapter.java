@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-
 import com.pitroq.nomoreforgetting.note.EventNote;
 import com.pitroq.nomoreforgetting.note.EventNotes;
 

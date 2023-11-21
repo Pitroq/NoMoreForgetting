@@ -2,27 +2,21 @@ package com.pitroq.nomoreforgetting.note;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-import com.thoughtworks.xstream.security.NoTypePermission;
-import com.thoughtworks.xstream.security.NullPermission;
-import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class TextNotes {
-    private static ArrayList<TextNote> notes = new ArrayList<>();
+    private static ArrayList<TextNote> textNotes = new ArrayList<>();
     public static String filesDir;
 
     public static void add(String title, String description) {
-        notes.add(new TextNote(notes.size(), title, description));
+        textNotes.add(new TextNote(textNotes.size(), title, description));
         saveToFile();
     }
 
@@ -37,38 +31,37 @@ public class TextNotes {
     }
 
     public static ArrayList<TextNote> getPinned() {
-        ArrayList<TextNote> pinnedNotes = new ArrayList<>();
-        for (TextNote note : notes) {
-            if (note.isPinned) {
-                pinnedNotes.add(note);
+        ArrayList<TextNote> pinnedTextNotes = new ArrayList<>();
+        for (TextNote textNote : textNotes) {
+            if (textNote.isPinned) {
+                pinnedTextNotes.add(textNote);
             }
         }
-        return pinnedNotes;
+        return pinnedTextNotes;
     }
 
     public static ArrayList<TextNote> getAll() {
-        return notes;
+        return textNotes;
     }
 
     public static void delete(int noteId) {
-        for (TextNote note : notes) {
+        for (TextNote note : textNotes) {
             if (note.id == noteId) {
-                notes.remove(note);
+                textNotes.remove(note);
                 saveToFile();
                 return;
             }
         }
     }
 
-    public static Boolean togglePinnedStatus(int noteId) {
-        for (TextNote note: notes) {
-            if (note.id == noteId) {
-                note.isPinned = !note.isPinned;
+    public static void togglePinnedStatus(int noteId) {
+        for (TextNote textNote: textNotes) {
+            if (textNote.id == noteId) {
+                textNote.isPinned = !textNote.isPinned;
                 saveToFile();
-                return note.isPinned;
+                return;
             }
         }
-        return null;
     }
 
     public static void saveToFile() {
@@ -79,7 +72,7 @@ public class TextNotes {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            xstream.toXML(notes, new FileWriter(file));
+            xstream.toXML(textNotes, new FileWriter(file));
         }
         catch (IOException e) {
             throw new RuntimeException(e);
@@ -104,6 +97,15 @@ public class TextNotes {
             throw new RuntimeException(e);
         }
 
-        notes = fileNotes;
+        textNotes = fileNotes;
+    }
+
+    public static TextNote get(int textNoteId) {
+        for (TextNote textNote: textNotes) {
+            if (textNote.id == textNoteId) {
+                return textNote;
+            }
+        }
+        return null;
     }
 }

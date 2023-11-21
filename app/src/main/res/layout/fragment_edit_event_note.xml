@@ -3,38 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".AddNewFragment"
+    tools:context=".EditEventNoteFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/title"
-        android:textSize="20sp"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:hint="@string/title_hint"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/type"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor,VisualLintTextFieldSize" />
 
-    <Spinner
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:dropDownWidth="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/event_form"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -94,12 +86,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <EditText
+        android:layout_marginTop="15dp"
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
         android:background="#eeeeee"
         android:gravity="start|top"
         android:hint="@string/description_hint"
@@ -112,9 +103,5 @@
         app:layout_constraintTop_toBottomOf="@+id/event_form"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="LabelFor,VisualLintTextFieldSize" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

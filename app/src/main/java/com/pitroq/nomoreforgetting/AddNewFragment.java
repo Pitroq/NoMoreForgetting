@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -25,38 +24,10 @@ public class AddNewFragment extends Fragment {
 
     }
 
-    private void createTimePicker(View fragmentView) {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hour, minute) -> {
-            String hourString = String.valueOf(hour);
-            String minuteString = String.valueOf(minute);
-            if (hour == 0) {
-                hourString = "00";
-            }
-            if (minute == 0) {
-                minuteString = "00";
-            }
-
-            String formated = hourString + ":" + minuteString;
-            ((EditText) fragmentView.findViewById(R.id.time)).setText(formated);
-        }, 0,0, true);
-        timePickerDialog.show();
-    }
-
-    private void createDatePicker(View fragmentView) {
-        final Calendar calendar = Calendar.getInstance();
-        int presentYear = calendar.get(Calendar.YEAR);
-        int presentMonth = calendar.get(Calendar.MONTH);
-        int presentDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, day) -> {
-            String formated = day + "-" + (month + 1) + "-" + year;
-            ((EditText) fragmentView.findViewById(R.id.date)).setText(formated);
-        }, presentYear, presentMonth, presentDay);
-        datePickerDialog.show();
-    }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        view.getRootView().findViewById(R.id.save_button).setVisibility(View.VISIBLE);
+
         Spinner spinner = view.findViewById(R.id.type);
 
         view.getRootView().findViewById(R.id.save_button).setOnClickListener(v -> {
@@ -65,21 +36,19 @@ public class AddNewFragment extends Fragment {
             String description = ((EditText) view.findViewById(R.id.description)).getText().toString();
             if (type.equals("Note")) {
                 TextNotes.add(title, description);
-                Toast.makeText(getContext(), "Created new note", Toast.LENGTH_LONG).show();
             }
             else {
                 String date = ((EditText) view.findViewById(R.id.date)).getText().toString();
                 String time = ((EditText) view.findViewById(R.id.time)).getText().toString();
                 EventNotes.add(title, description, date, time);
-                Toast.makeText(getContext(), "Created new event", Toast.LENGTH_LONG).show();
             }
 
             ((BottomNavigationView) view.getRootView().findViewById(R.id.bottom_navigation_view)).setSelectedItemId(R.id.home_item);
 
         });
 
-        view.findViewById(R.id.select_date_button).setOnClickListener(v -> createDatePicker(view));
-        view.findViewById(R.id.select_time_button).setOnClickListener(v -> createTimePicker(view));
+        view.findViewById(R.id.select_time_button).setOnClickListener(v -> DateTimePickerUtils.createTimePicker(view, getContext(), R.id.time));
+        view.findViewById(R.id.select_date_button).setOnClickListener(v -> DateTimePickerUtils.createDatePicker(view, getContext(), R.id.date));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.noteTypes, android.R.layout.simple_spinner_dropdown_item);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
